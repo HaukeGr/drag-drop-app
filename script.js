@@ -1,8 +1,7 @@
 var dataArr = [
   {text: "Beerdigen", field: "A"},
-  {text: "Nageln", field: "B"},
-  {text: "Lochen", field: "C"},
-  {text: "Lochen", field: }
+  {text: "Nageln", field: "C"},
+  {text: "Lochen", field: "B"},
 ]
 
 var wordCounter = 0;

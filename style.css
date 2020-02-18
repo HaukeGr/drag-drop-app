@@ -1,0 +1,33 @@
+html,body{
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+  font-family: 'Nunito', sans-serif;
+}
+.col{
+  display: block;
+  width: 33vw;
+  height: 50vh;
+  margin: 0;
+  float: left;
+  text-align: center;
+}
+.col * {
+  padding: 1rem;
+}
+#titel{
+
+}
+#buero{
+  background-color: #DBDBDB;
+}
+#timer{
+}
+#bestatter{
+  background-color: #253C84;
+}
+#main{
+}
+#tischler{
+  background-color: #F29404;
+}

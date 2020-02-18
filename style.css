@@ -27,6 +27,18 @@ html,body{
   background-color: #253C84;
 }
 #main{
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+#main .text{
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: white;
+  margin: auto;
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(191,191,191,0.5);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(191,191,191,0.5);
+  box-shadow: 0px 0px 10px 5px rgba(191,191,191,0.5);
 }
 #tischler{
   background-color: #F29404;

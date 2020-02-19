@@ -7,7 +7,7 @@ html,body{
 }
 .col{
   display: block;
-  width: 33vw;
+  width: 30vw;
   height: 50vh;
   margin: 0;
   float: left;
@@ -58,8 +58,6 @@ html,body{
 #buero{
   background-color: #DBDBDB;
 }
-#timer{
-}
 #bestatter{
   background-color: #253C84;
 }
@@ -81,8 +79,16 @@ html,body{
 #tischler{
   background-color: #F29404;
 }
-
-#big-circle {
-  position: absolute;
-  top: 191px;
+.timer-container{
+  position: relative;
+}
+.timer-container #big-circle{
+  margin-top: -95%;
+}
+.play-pause{
+  margin-top: -100%;
+  margin-left: -15%;
+}
+.play-pause svg{
+  fill: #253C84;
 }

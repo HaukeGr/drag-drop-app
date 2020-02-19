@@ -23,6 +23,8 @@ var dataArr = [
   {text: "Müll rausbringen", field: "B"},
   {text: "Die Auffahrt fegen", field: "A"},
 ];
+var wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
+console.log(wordCounter)
 
 
 var bestatterInput = [];
@@ -74,6 +76,11 @@ function changeWord() {
 }
 
 $(document).ready(function() {
+
+  $("#start-btn").click(function() {
+    $(".play-pause").css("opacity", "0").delay(300).css("display", "none");
+    $("#time-dig").delay(300).css("display", "block").css("opacity", "1");
+  })
 
   $("#big-circle").circleProgress({
     startAngle: -Math.PI / 4 * 2,
@@ -141,16 +148,11 @@ var attempt = 0;
         console.log(tischlerInput)
 
 
-        $(".play-pause").click(function() {
-          $(this).css("opacity", "0").delay(300).css("display", "none");
-          $("#time-dig").delay(300).css("display", "block").css("opacity", "1");
-        })
-
-
 
         //console.log(JSON.parse(data).target_class)
 //ev.target.appendChild(document.getElementById(JSON.parse(data).target_id));
       }
+
 
 
 // ----------------------------------------------- //

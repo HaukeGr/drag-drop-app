@@ -99,9 +99,15 @@ html,body{
 }
 .right{
   border: 3px solid #13DA3D;
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
 }
 .wrong{
   border: 3px solid #FF4848;
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
 }
 .tischler{
   background-color: #F29404;
@@ -110,10 +116,10 @@ html,body{
   position: relative;
 }
 .timer-container #big-circle{
-  margin-top: -95%;
+  margin-top: -97%;
 }
 .play-pause{
-  margin-top: -69%;
+  margin-top: -76%;
   margin-left: 0%;
   padding: 0;
   transition: all 300ms;
@@ -126,8 +132,9 @@ html,body{
   cursor: pointer;
 }
 #time-dig{
+  font-size: 2.75em;
   position: absolute;
-  margin-top: -120%;
+  margin-top: -57%;
   margin-left: 37%;
   padding: 0;
   width: auto;

@@ -85,8 +85,8 @@ $(document).ready(function() {
   $("#big-circle").circleProgress({
     startAngle: -Math.PI / 4 * 2,
     value: 1,
-    size: 130,
-    thickness: 10,
+    size: 140,
+    thickness: 12,
     fill: '#F29404',
     animation: { duration: 1000, easing: "circleProgressEasing" }
   });
@@ -94,7 +94,8 @@ $(document).ready(function() {
   $("#small-circle").circleProgress({
     startAngle: -Math.PI / 4 * 2,
     value: 1,
-    size: 100,
+    size: 116,
+    thickness: 12,
     fill: '#253C84',
     animation: { duration: 1000, easing: "circleProgressEasing" }
   });

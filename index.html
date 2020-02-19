@@ -6,6 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
         <script src="jquery.js"></script>
         <script src="timer.js"></script>
+        <script src="jquery-circle-progress/dist/circle-progress.js"></script>
         <script src="script.js"></script>
     </head>
     <body>
@@ -44,7 +45,25 @@
     </g></svg>
           </div>
           <div id="timer" class="col">
-            <h3>Timer</h3>
+            <h3 id="time-dig">Timer</h3>
+            <div id="small-circle">
+            </div>
+            <div id="big-circle">
+            </div>
+
+<!--
+<div class="play-pause color">
+  <svg id="play" class="hover" width="64pt" height="64pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+    <g>
+      <path d="M74.3,45.7L43.8,20.4c-1.4-1.1-3.2-1.4-4.8-0.6c-1.6,0.7-2.6,2.3-2.6,4.1v50.6c0,1.8,1,3.4,2.6,4.1   c0.6,0.3,1.3,0.4,1.9,0.4c1,0,2.1-0.4,2.9-1l30.5-25.3c1-0.9,1.6-2.1,1.6-3.5C75.9,47.9,75.3,46.6,74.3,45.7z"></path>                </g>
+  </svg>
+  <svg id="pause" class="hide hover" width="64pt" height="64pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+      <g><g>
+        <path d="M36.6,79h-4.5c-3,0-5.4-2.4-5.4-5.4V24.8c0-3,2.4-5.4,5.4-5.4h4.5c3,0,5.4,2.4,5.4,5.4v48.8C42,76.6,39.6,79,36.6,79z"></path></g></g><g><g><path d="M67.7,79h-4.5c-3,0-5.4-2.4-5.4-5.4V24.8c0-3,2.4-5.4,5.4-5.4h4.5c3,0,5.4,2.4,5.4,5.4v48.8C73.1,76.6,70.6,79,67.7,79z"></path>
+      </g>
+    </g>
+  </svg>
+</div>-->
           </div>
           <div id="bestatter" class="col">
             <h3>Bestatter*in</h3>
@@ -72,7 +91,7 @@
     </g></svg>
           </div>
           <div id="main" class="col">
-            
+            <div style="border: 1px solid black; padding: 5px;" id="start-btn">Start</div>
           </div>
           <div id="tischler" class="col">
             <h3>Tischler*in</h3>

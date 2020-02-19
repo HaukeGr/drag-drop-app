@@ -81,3 +81,8 @@ html,body{
 #tischler{
   background-color: #F29404;
 }
+
+#big-circle {
+  position: absolute;
+  top: 191px;
+}

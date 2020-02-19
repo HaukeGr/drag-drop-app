@@ -2,14 +2,14 @@ var wordCounter = 0;
 var wordTime = 3;
 var totalTime = 60;
 var dataArr = [
-  {text: "Beerdigen", field: "A"},
-  {text: "Nageln", field: "C"},
-  {text: "Lochen", field: "B"},
-  {text: "'Moin Meister' sagen", field: "B"},
-  {text: "Kaffee kochen", field: "C"},
-  {text: "Brötchen holen", field: "A"},
-  {text: "Toiletten putzen", field: "C"},
-  {text: "Müll rausbringen", field: "B"},
+  {text: "Beerdigen", field: "bestatter-drop"},
+  {text: "Nageln", field: "tischler-drop"},
+  {text: "Lochen", field: "buero-drop"},
+  {text: "'Moin Meister' sagen", field: "tischler-drop"},
+  {text: "Kaffee kochen", field: "buero-drop"},
+  {text: "Brötchen holen", field: "buero-drop"},
+  {text: "Toiletten putzen", field: "buero-drop"},
+  {text: "Müll rausbringen", field: "bestatter-drop"},
   {text: "Die Auffahrt fegen", field: "A"},
   {text: "Beerdigen", field: "A"},
   {text: "Nageln", field: "C"},
@@ -24,6 +24,11 @@ var dataArr = [
   {text: "Müll rausbringen", field: "B"},
   {text: "Die Auffahrt fegen", field: "A"},
 ];
+
+
+var bestatterInput = [];
+var bueroInput = [];
+var tischlerInput = [];
 
 // -------------------------------------------------- //
 
@@ -106,23 +111,42 @@ var attempt = 0;
       }
 
       function drag(ev) {
-        //ar data = JSON.stringify({
+        //  var data = JSON.stringify({
         //  target_id: ev.target.id,
         //  ans: ev.target.getAttribute('data-ans')
-      //  });
-        ev.dataTransfer.setData("ans", $(ev.target).attr('data-ans'));
+        //  });
+        ev.dataTransfer.setData("correctAnswer", $(ev.target).attr('data-ans'));
+        ev.dataTransfer.setData("word", $(ev.target).text());
       }
 
       function drop(ev) {
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("ans");
-        console.log(data);
+        var correctAnswer = ev.dataTransfer.getData("correctAnswer");
+        var word = ev.dataTransfer.getData("word");
+        var chosenField = ev.target.id;
+        console.log(correctAnswer + ", " + chosenField)
+        switch (chosenField) {
+          case 'bestatter-drop':
+            bestatterInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            break;
+          case 'buero-drop':
+            bueroInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            break;
+          case 'tischler-drop':
+            tischlerInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            break;
+        }
+        console.log(bestatterInput)
+        console.log(bueroInput)
+        console.log(tischlerInput)
+
+
         //console.log(JSON.parse(data).target_class)
 //ev.target.appendChild(document.getElementById(JSON.parse(data).target_id));
       }
 
 
-
+// ----------------------------------------------- //
 
 
 

@@ -109,13 +109,25 @@ html,body{
   margin-top: -95%;
 }
 .play-pause{
-  margin-top: -90%;
-  margin-left: -15%;
+  margin-top: -82%;
+  margin-left: 0%;
   padding: 0;
+  transition: all 300ms;
 }
 .play-pause svg{
   fill: #253C84;
 }
 #start-btn{
   z-index: 2;
+  cursor: pointer;
+}
+#time-dig{
+  position: absolute;
+  margin-top: -57%;
+  margin-left: 37%;
+  padding: 0;
+  width: auto;
+
+  opacity: 0;
+  display: block;
 }

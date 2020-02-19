@@ -18,7 +18,6 @@ html,body{
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .break{
   flex-basis: 100%;
   height: 0;
@@ -28,7 +27,7 @@ html,body{
   margin: auto;
 }
 .col h3{
-  font-size: 3em;
+  font-size: 2em;
   color: rgba(0,0,0, 0.6);
   width: 100%;
 }
@@ -84,8 +83,6 @@ html,body{
   height: 50vh;
   padding: 0;
 }
-#main{
-}
 #main .text{
   font-size: 1.25em;
   display: inline-block;
@@ -95,9 +92,6 @@ html,body{
   -webkit-box-shadow: 0px 0px 10px 5px rgba(191,191,191,0.5);
   -moz-box-shadow: 0px 0px 10px 5px rgba(191,191,191,0.5);
   box-shadow: 0px 0px 10px 5px rgba(191,191,191,0.5);
-}
-#main .text{
-
 }
 .tischler{
   background-color: #F29404;

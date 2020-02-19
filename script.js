@@ -78,8 +78,8 @@ function changeWord() {
 $(document).ready(function() {
 
   $("#start-btn").click(function() {
-    $(".play-pause").css("opacity", "0").delay(300).css("display", "none");
-    $("#time-dig").delay(300).css("display", "block").css("opacity", "1");
+    $(".play-pause").css("opacity", "0").delay(300);
+    $("#time-dig").delay(300).css("opacity", "1");
   })
 
   $("#big-circle").circleProgress({

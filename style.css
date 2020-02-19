@@ -109,9 +109,13 @@ html,body{
   margin-top: -95%;
 }
 .play-pause{
-  margin-top: -100%;
+  margin-top: -90%;
   margin-left: -15%;
+  padding: 0;
 }
 .play-pause svg{
   fill: #253C84;
+}
+#start-btn{
+  z-index: 2;
 }

@@ -18,8 +18,8 @@ html,body{
   justify-content: center;
   flex-wrap: wrap;
 }
-.col svg {
-  transform: scale(0.9);
+.col .bg {
+  transform: scale(0.5);
   padding: 0rem;
 }
 .break{
@@ -87,7 +87,7 @@ html,body{
   height: 50vh;
   padding: 0;
 }
-#main .text{
+.text{
   font-size: 1.25em;
   display: inline-block;
   padding: 1rem 2rem;
@@ -120,7 +120,6 @@ html,body{
 }
 .play-pause svg{
   fill: #253C84;
-  transform: scale(1.2);
 }
 #start-btn{
   z-index: 2;
@@ -128,11 +127,10 @@ html,body{
 }
 #time-dig{
   position: absolute;
-  margin-top: -57%;
+  margin-top: -120%;
   margin-left: 37%;
   padding: 0;
   width: auto;
-
   opacity: 0;
   display: block;
 }

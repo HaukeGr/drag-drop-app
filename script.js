@@ -23,8 +23,7 @@ var dataArr = [
   {text: "Müll rausbringen", field: "B"},
   {text: "Die Auffahrt fegen", field: "A"},
 ];
-var wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
-console.log(wordCounter)
+var wordCounter;
 
 
 var bestatterInput = [];
@@ -68,9 +67,10 @@ function changeWord() {
   });
 
   wordTimer.start(wordTime).on('end', function () {
+    wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
     $("#main").empty();
     $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
-    wordCounter = wordCounter + 1;
+    console.log(dataArr.splice(wordCounter, 1))
   });
 
 }
@@ -102,7 +102,15 @@ $(document).ready(function() {
   $("#start-btn").click(function() {
     totalTimer.start(totalTime).on('end', function () {
       // AUSWERTUNG ANZEIGEN //
-
+      for (var i = 0; i < bestatterInput.length; i++) {
+        $("#bestatter-results").append(bestatterInput[i].html)
+      }
+      for (var i = 0; i < bueroInput.length; i++) {
+        $("#buero-results").append(bueroInput[i].html)
+      }
+      for (var i = 0; i < tischlerInput.length; i++) {
+        $("#tischler-results").append(tischlerInput[i].html)
+      }
     });
   });
 
@@ -131,16 +139,22 @@ var attempt = 0;
         var correctAnswer = ev.dataTransfer.getData("correctAnswer");
         var word = ev.dataTransfer.getData("word");
         var chosenField = ev.target.id;
-        console.log(correctAnswer + ", " + chosenField)
+        var validationClass;
+        if (chosenField == correctAnswer) {
+          validationClass = "right";
+        }
+        else {
+          validationClass = "wrong";
+        }
         switch (chosenField) {
           case 'bestatter-drop':
-            bestatterInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            bestatterInput.push({html: "<p class='text " + validationClass + "'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
             break;
           case 'buero-drop':
-            bueroInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            bueroInput.push({html: "<p class='text " + validationClass + "'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
             break;
           case 'tischler-drop':
-            tischlerInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            tischlerInput.push({html: "<p class='text " + validationClass + "'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
             break;
         }
         console.log(bestatterInput)

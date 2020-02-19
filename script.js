@@ -1,5 +1,5 @@
 var wordTime = 3;
-var totalTime = 60;
+var totalTime = 45;
 var dataArr = [
   {text: "Fotos bearbeiten", field: "buero-drop"},
   {text: "Kontieren", field: "buero-drop"},
@@ -20,7 +20,7 @@ var dataArr = [
   {text: "Aktenvermerk erstellen", field: "buero-drop"},
   {text: "Termine koordinieren", field: "buero-drop"},
   {text: "Datenbank pflegen", field: "buero-drop"},
-  {text: "Aktien verwalten", field: "buero-drop"},
+  {text: "Akten verwalten", field: "buero-drop"},
   {text: "Löhne und Gehälter berechnen", field: "buero-drop"},
   {text: "Zahlungen überweisen", field: "buero-drop"},
   {text: "Ligatur setzen", field: "bestatter-drop"},
@@ -72,6 +72,32 @@ var bueroInput = [];
 var tischlerInput = [];
 
 // -------------------------------------------------- //
+var wordTimer = new Timer({
+  tick: 1,
+  ontick: (function() {
+  $("#time-dig").text(((wordTimer.getDuration() / 1000)).toFixed(0));
+  }),
+  onstart: function() {
+    $("#time-dig").text(Math.floor(wordTimer.getDuration() / 1000));
+    $("#small-circle").circleProgress({
+      animationStartValue: 0,
+      value: 1,
+      animation: {duration: wordTimer.getDuration(), easing: 'linear'}
+    });
+
+  }
+});
+
+function changeWord() {
+
+  wordTimer.start(wordTime).on('end', function () {
+    wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
+    $("#main").empty();
+    $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
+    dataArr.splice(wordCounter, 1);
+  });
+}
+
 
 var totalTimer = new Timer({
   tick: wordTime,
@@ -87,34 +113,6 @@ var totalTimer = new Timer({
     });
   }
 });
-
-
-
-function changeWord() {
-
-  var wordTimer = new Timer({
-    tick: 1,
-    ontick: (function() {
-    $("#time-dig").text(((wordTimer.getDuration() / 1000)).toFixed(0));
-    }),
-    onstart: function() {
-      $("#time-dig").text(Math.floor(wordTimer.getDuration() / 1000));
-      $("#small-circle").circleProgress({
-        animationStartValue: 0,
-        value: 1,
-        animation: {duration: wordTimer.getDuration(), easing: 'linear'}
-      });
-    }
-  });
-
-  wordTimer.start(wordTime).on('end', function () {
-    wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
-    $("#main").empty();
-    $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
-    console.log(dataArr.splice(wordCounter, 1))
-  });
-
-}
 
 $(document).ready(function() {
 
@@ -177,31 +175,42 @@ var attempt = 0;
       }
 
       function drop(ev) {
+        wordTimer.stop();
+        wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
+        $("#main").empty();
+        $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
+        dataArr.splice(wordCounter, 1);
+        changeWord();
         ev.preventDefault();
         var correctAnswer = ev.dataTransfer.getData("correctAnswer");
         var word = ev.dataTransfer.getData("word");
         var chosenField = ev.target.id;
         var validationClass;
+
         if (chosenField == correctAnswer) {
           validationClass = "right";
         }
         else {
           validationClass = "wrong";
         }
+
         switch (chosenField) {
           case 'bestatter-drop':
             bestatterInput.push({html: "<p class='text " + validationClass + "'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            console.log(bestatterInput)
             break;
           case 'buero-drop':
             bueroInput.push({html: "<p class='text " + validationClass + "'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            console.log(bueroInput)
             break;
           case 'tischler-drop':
             tischlerInput.push({html: "<p class='text " + validationClass + "'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            console.log(tischlerInput)
             break;
         }
-        console.log(bestatterInput)
-        console.log(bueroInput)
-        console.log(tischlerInput)
+
+
+
 
 
 

@@ -30,7 +30,7 @@ var dataArr = [
 var totalTimer = new Timer({
   tick: wordTime,
   ontick: function() {
-    changeWord()
+    changeWord();
   },
   onstart: function() {
     changeWord();
@@ -38,7 +38,8 @@ var totalTimer = new Timer({
       animationStartValue: 0,
       value: 1,
       animation: {duration: totalTimer.getDuration(), easing: 'linear'}
-  }); }
+    });
+  }
 });
 
 
@@ -48,10 +49,10 @@ function changeWord() {
   var wordTimer = new Timer({
     tick: 1,
     ontick: (function() {
-    $("#time-dig").text(((wordTimer.getDuration() / 1000)).toFixed(0))
+    $("#time-dig").text(((wordTimer.getDuration() / 1000)).toFixed(0));
     }),
     onstart: function() {
-      $("#time-dig").text(Math.floor(wordTimer.getDuration() / 1000))
+      $("#time-dig").text(Math.floor(wordTimer.getDuration() / 1000));
       $("#small-circle").circleProgress({
         animationStartValue: 0,
         value: 1,
@@ -62,10 +63,9 @@ function changeWord() {
 
   wordTimer.start(wordTime).on('end', function () {
     $("#main").empty();
-    $("#main").append("<div class='text' draggable='true'>" + dataArr[wordCounter].text + "</div>")
+    $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
     wordCounter = wordCounter + 1;
-    console.log("ok")
-  })
+  });
 
 }
 
@@ -106,18 +106,19 @@ var attempt = 0;
       }
 
       function drag(ev) {
-        var data = JSON.stringify({
-          target_id: ev.target.id,
-          ans: ev.target.getAttribute('data-ans')
-        });
-        ev.dataTransfer.setData("img", data);
-        console.log();
+        //ar data = JSON.stringify({
+        //  target_id: ev.target.id,
+        //  ans: ev.target.getAttribute('data-ans')
+      //  });
+        ev.dataTransfer.setData("ans", $(ev.target).attr('data-ans'));
       }
 
       function drop(ev) {
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("img");
-ev.target.appendChild(document.getElementById(JSON.parse(data).target_id));
+        var data = ev.dataTransfer.getData("ans");
+        console.log(data);
+        //console.log(JSON.parse(data).target_class)
+//ev.target.appendChild(document.getElementById(JSON.parse(data).target_id));
       }
 
 

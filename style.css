@@ -18,6 +18,10 @@ html,body{
   justify-content: center;
   flex-wrap: wrap;
 }
+.col svg {
+  transform: scale(0.9);
+  padding: 0rem;
+}
 .break{
   flex-basis: 100%;
   height: 0;
@@ -93,6 +97,12 @@ html,body{
   -moz-box-shadow: 0px 0px 10px 5px rgba(191,191,191,0.5);
   box-shadow: 0px 0px 10px 5px rgba(191,191,191,0.5);
 }
+.right{
+  border: 3px solid #13DA3D;
+}
+.wrong{
+  border: 3px solid #FF4848;
+}
 .tischler{
   background-color: #F29404;
 }
@@ -103,13 +113,14 @@ html,body{
   margin-top: -95%;
 }
 .play-pause{
-  margin-top: -82%;
+  margin-top: -69%;
   margin-left: 0%;
   padding: 0;
   transition: all 300ms;
 }
 .play-pause svg{
   fill: #253C84;
+  transform: scale(1.2);
 }
 #start-btn{
   z-index: 2;

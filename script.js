@@ -1,32 +1,102 @@
+var wordCounter = 0;
+var wordTime = 3;
+var totalTime = 60;
 var dataArr = [
   {text: "Beerdigen", field: "A"},
   {text: "Nageln", field: "C"},
   {text: "Lochen", field: "B"},
-]
+  {text: "'Moin Meister' sagen", field: "B"},
+  {text: "Kaffee kochen", field: "C"},
+  {text: "Brötchen holen", field: "A"},
+  {text: "Toiletten putzen", field: "C"},
+  {text: "Müll rausbringen", field: "B"},
+  {text: "Die Auffahrt fegen", field: "A"},
+  {text: "Beerdigen", field: "A"},
+  {text: "Nageln", field: "C"},
+  {text: "Lochen", field: "B"},
+  {text: "'Moin Meister' sagen", field: "B"},
+  {text: "Kaffee kochen", field: "C"},
+  {text: "Brötchen holen", field: "A"},
+  {text: "Toiletten putzen", field: "C"},
+  {text: "Müll rausbringen", field: "B"},
+  {text: "Die Auffahrt fegen", field: "A"},
+  {text: "Toiletten putzen", field: "C"},
+  {text: "Müll rausbringen", field: "B"},
+  {text: "Die Auffahrt fegen", field: "A"},
+];
 
-var wordCounter = 0;
+// -------------------------------------------------- //
+
+var totalTimer = new Timer({
+  tick: wordTime,
+  ontick: function() {
+    changeWord()
+  },
+  onstart: function() {
+    changeWord();
+    $("#big-circle").circleProgress({
+      animationStartValue: 0,
+      value: 1,
+      animation: {duration: totalTimer.getDuration(), easing: 'linear'}
+  }); }
+});
+
+
+
 function changeWord() {
-  $("#main").empty();
-  $("#main").append("<div class='text' draggable='true'>" + dataArr[wordCounter].text + "</div>")
-  wordCounter = wordCounter + 1;
+
+  var wordTimer = new Timer({
+    tick: 1,
+    ontick: (function() {
+    $("#time-dig").text(((wordTimer.getDuration() / 1000)).toFixed(0))
+    }),
+    onstart: function() {
+      $("#time-dig").text(Math.floor(wordTimer.getDuration() / 1000))
+      $("#small-circle").circleProgress({
+        animationStartValue: 0,
+        value: 1,
+        animation: {duration: wordTimer.getDuration(), easing: 'linear'}
+      });
+    }
+  });
+
+  wordTimer.start(wordTime).on('end', function () {
+    $("#main").empty();
+    $("#main").append("<div class='text' draggable='true'>" + dataArr[wordCounter].text + "</div>")
+    wordCounter = wordCounter + 1;
+    console.log("ok")
+  })
+
 }
 
-var pizzaTimer = new Timer({
-  tick: 3,
-  ontick: function() {changeWord()}
-});
-var pizzaCookingTime = 15; // 15 minutes
-
 $(document).ready(function() {
-  pizzaTimer.start(pizzaCookingTime).on('end', function () {
-    alert('Pizza is ready, bon appetit!');
+
+  $("#big-circle").circleProgress({
+    startAngle: -Math.PI / 4 * 2,
+    value: 1,
+    size: 130,
+    thickness: 10,
+    fill: '#F29404',
+    animation: { duration: 1000, easing: "circleProgressEasing" }
   });
+
+  $("#small-circle").circleProgress({
+    startAngle: -Math.PI / 4 * 2,
+    value: 1,
+    size: 100,
+    fill: '#253C84',
+    animation: { duration: 1000, easing: "circleProgressEasing" }
+  });
+
+  $("#start-btn").click(function() {
+    totalTimer.start(totalTime).on('end', function () {
+      // AUSWERTUNG ANZEIGEN //
+    });
+  });
+
 });
 
-
-
-
-
+// ------------------------------------------------- //
 
 
 var attempt = 0;

@@ -1,4 +1,3 @@
-var wordCounter = 0;
 var wordTime = 3;
 var totalTime = 60;
 var dataArr = [
@@ -96,6 +95,7 @@ $(document).ready(function() {
   $("#start-btn").click(function() {
     totalTimer.start(totalTime).on('end', function () {
       // AUSWERTUNG ANZEIGEN //
+
     });
   });
 
@@ -139,6 +139,13 @@ var attempt = 0;
         console.log(bestatterInput)
         console.log(bueroInput)
         console.log(tischlerInput)
+
+
+        $(".play-pause").click(function() {
+          $(this).css("opacity", "0").delay(300).css("display", "none");
+          $("#time-dig").delay(300).css("display", "block").css("opacity", "1");
+        })
+
 
 
         //console.log(JSON.parse(data).target_class)

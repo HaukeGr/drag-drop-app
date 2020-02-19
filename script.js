@@ -123,12 +123,23 @@ var attempt = 0;
         ev.preventDefault();
         var correctAnswer = ev.dataTransfer.getData("correctAnswer");
         var word = ev.dataTransfer.getData("word");
-        var chosenField = ev.target.id
-        console.log(ev.target.id);
+        var chosenField = ev.target.id;
+        console.log(correctAnswer + ", " + chosenField)
         switch (chosenField) {
           case 'bestatter-drop':
-            bestatterInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer})
+            bestatterInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            break;
+          case 'buero-drop':
+            bueroInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            break;
+          case 'tischler-drop':
+            tischlerInput.push({html: "<p class='text'>" + word + "</p>", correctAnswer: correctAnswer, chosenField: chosenField});
+            break;
         }
+        console.log(bestatterInput)
+        console.log(bueroInput)
+        console.log(tischlerInput)
+
 
         //console.log(JSON.parse(data).target_class)
 //ev.target.appendChild(document.getElementById(JSON.parse(data).target_id));

@@ -1,5 +1,5 @@
 var wordTime = 3;
-var totalTime = 45;
+var totalTime = 10;
 var dataArr = [
   {text: "Fotos bearbeiten", field: "buero-drop"},
   {text: "Kontieren", field: "buero-drop"},
@@ -145,12 +145,15 @@ $(document).ready(function() {
       for (var i = 0; i < bestatterInput.length; i++) {
         $("#bestatter-results").append(bestatterInput[i].html)
       }
-      for (var i = 0; i < bueroInput.length; i++) {
-        $("#buero-results").append(bueroInput[i].html)
+      console.log(bestatterInput.length);
+      for (var j = 0; j < bueroInput.length; j++) {
+        $("#buero-results").append(bueroInput[j].html)
       }
-      for (var i = 0; i < tischlerInput.length; i++) {
-        $("#tischler-results").append(tischlerInput[i].html)
+      console.log(bueroInput.length)
+      for (var k = 0; k < tischlerInput.length; k++) {
+        $("#tischler-results").append(tischlerInput[k].html)
       }
+      console.log(tischlerInput.length)
     });
   });
 

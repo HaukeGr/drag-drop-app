@@ -188,7 +188,12 @@ var attempt = 0;
 
       function allowDrop(ev) {
         ev.preventDefault();
-        $(ev.target).css("background-color", "rgba(1, 1, 1, 0.1)");
+        $(ev.target).css("background-color", "rgba(1, 1, 1, 0.2)");
+      }
+
+      function resetBg(ev) {
+        ev.preventDefault();
+        $(ev.target).css("background-color", "rgba(0, 0, 0, 0)")
       }
 
       function drag(ev) {

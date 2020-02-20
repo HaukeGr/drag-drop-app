@@ -1,5 +1,5 @@
 var wordTime = 3;
-var totalTime = 10;
+var totalTime = 30;
 var originData = [
   {text: "Fotos bearbeiten", field: "buero-drop"},
   {text: "Kontieren", field: "buero-drop"},

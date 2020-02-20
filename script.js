@@ -1,6 +1,6 @@
 var wordTime = 3;
-var totalTime = 10;
-var dataArr = [
+var totalTime = 60;
+var originData = [
   {text: "Fotos bearbeiten", field: "buero-drop"},
   {text: "Kontieren", field: "buero-drop"},
   {text: "Controlling", field: "buero-drop"},
@@ -62,8 +62,8 @@ var dataArr = [
   {text: "Fuschschwanz", field: "tischler-drop"},
   {text: "Kuhfuß", field: "tischler-drop"},
 
-
 ];
+var dataArr = [...originData];
 var wordCounter;
 
 
@@ -167,6 +167,7 @@ $(document).ready(function() {
         $("#tischler-results").append(tischlerInput[k].html)
       }
       console.log(tischlerInput.length)
+      console.log(dataArr)
     });
   });
 
@@ -175,7 +176,8 @@ $(document).ready(function() {
     swapView("app");
     $("#time-dig").css("opacity", "0");
     $(".play-pause").delay(300).css("opacity", "1");
-
+    dataArr = [...originData];
+    console.log(dataArr)
   })
 });
 
@@ -186,6 +188,7 @@ var attempt = 0;
 
       function allowDrop(ev) {
         ev.preventDefault();
+        $(ev.target).css("background-color", "rgba(1, 1, 1, 0.1)");
       }
 
       function drag(ev) {

@@ -61,7 +61,6 @@ var originData = [
   {text: "Nageln", field: "tischler-drop"},
   {text: "Fuschschwanz", field: "tischler-drop"},
   {text: "Kuhfuß", field: "tischler-drop"},
-
 ];
 var dataArr = [...originData];
 var wordCounter;
@@ -72,31 +71,65 @@ var bueroInput = [];
 var tischlerInput = [];
 
 // -------------------------------------------------- //
+
 var wordTimer = new Timer({
   tick: 1,
   ontick: (function() {
   $("#time-dig").text(((wordTimer.getDuration() / 1000)).toFixed(0));
   }),
   onstart: function() {
-    $("#time-dig").text(Math.floor(wordTimer.getDuration() / 1000));
+    console.log("gestartet")
+    $("#time-dig").text(3);
     $("#small-circle").circleProgress({
       animationStartValue: 0,
       value: 1,
-      animation: {duration: wordTimer.getDuration(), easing: 'linear'}
+      animation: {duration: wordTime * 1000, easing: 'linear'}
     });
 
   }
 });
 
 function changeWord() {
+  wordTimer.stop();
+  wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
+  $("#main").empty();
+  $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
+  dataArr.splice(wordCounter, 1);
 
   wordTimer.start(wordTime).on('end', function () {
     wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
     $("#main").empty();
     $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
     dataArr.splice(wordCounter, 1);
+    changeWord();
   });
+
 }
+
+var totalTimer = new Timer({
+
+  tick: wordTime,
+  ontick: function() {
+      //console.log("von totalTimer")
+      //changeWord();
+
+  },
+  onstart: function() {
+  //  wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
+  //  $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
+  //  dataArr.splice(wordCounter, 1);
+
+    changeWord();
+
+    $("#big-circle").circleProgress({
+      animationStartValue: 0,
+      value: 1,
+      animation: {duration: totalTimer.getDuration(), easing: 'linear'}
+    });
+
+  }
+
+});
 
 function swapView(view) {
   if (view == "app"){
@@ -107,24 +140,6 @@ function swapView(view) {
     $("#results").delay(300).css("opacity", "1").css("display", "block");
   }
 }
-
-var totalTimer = new Timer({
-  tick: wordTime,
-  ontick: function() {
-    changeWord();
-  },
-  onstart: function() {
-    wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
-    $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
-    dataArr.splice(wordCounter, 1);
-    changeWord();
-    $("#big-circle").circleProgress({
-      animationStartValue: 0,
-      value: 1,
-      animation: {duration: totalTimer.getDuration(), easing: 'linear'}
-    });
-  }
-});
 
 $(document).ready(function() {
 
@@ -156,6 +171,9 @@ $(document).ready(function() {
 
   $("#start-btn").click(function() {
     totalTimer.start(totalTime).on('end', function () {
+
+      wordTimer.stop();
+      $("#main").empty();
       // AUSWERTUNG ANZEIGEN //
       swapView("results");
       for (var i = 0; i < bestatterInput.length; i++) {
@@ -191,7 +209,6 @@ $(document).ready(function() {
     bueroInput = [];
     tischlerInput = [];
 
-    console.log(dataArr);
   })
 });
 
@@ -223,11 +240,11 @@ var attempt = 0;
 
         ev.preventDefault();
 
-        wordTimer.stop();
-        wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
-        $("#main").empty();
-        $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
-        dataArr.splice(wordCounter, 1);
+      //  wordTimer.stop();
+      //  wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
+      //  $("#main").empty();
+      //  $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
+      //  dataArr.splice(wordCounter, 1);
         changeWord();
         $(ev.target).css("background-color", "rgba(0, 0, 0, 0)")
 

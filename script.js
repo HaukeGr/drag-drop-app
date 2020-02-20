@@ -210,6 +210,15 @@ $(document).ready(function() {
     tischlerInput = [];
     wordTimer.stop();
     totalTimer.stop();
+
+    $("#big-circle").circleProgress({
+      value: 1,
+    });
+
+    $("#small-circle").circleProgress({
+      value: 1,
+    });
+
   })
 });
 

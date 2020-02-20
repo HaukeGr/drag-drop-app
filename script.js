@@ -114,6 +114,9 @@ var totalTimer = new Timer({
     changeWord();
   },
   onstart: function() {
+    wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
+    $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
+    dataArr.splice(wordCounter, 1);
     changeWord();
     $("#big-circle").circleProgress({
       animationStartValue: 0,

@@ -59,7 +59,7 @@ var originData = [
   {text: "Hohlkehle fräsen", field: "tischler-drop"},
   {text: "Beizen", field: "tischler-drop"},
   {text: "Nageln", field: "tischler-drop"},
-  {text: "Fuschschwanz", field: "tischler-drop"},
+  {text: "Fuchsschwanz", field: "tischler-drop"},
   {text: "Kuhfuß", field: "tischler-drop"},
 ];
 var dataArr = [...originData];

@@ -168,5 +168,9 @@ html,body{
   padding: 0.25em;
 }
 html *, body *, .text{
-  /*cursor: none!important;*/ 
+  /*cursor: none!important;*/
+}
+
+.hide {
+  transform: translateX(-9999px);
 }

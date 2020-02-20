@@ -1,5 +1,5 @@
 var wordTime = 3;
-var totalTime = 45;
+var totalTime = 10;
 var dataArr = [
   {text: "Fotos bearbeiten", field: "buero-drop"},
   {text: "Kontieren", field: "buero-drop"},
@@ -98,6 +98,15 @@ function changeWord() {
   });
 }
 
+function swapView(view) {
+  if (view == "app"){
+    $("#results").css("opacity", "0").delay(300).css("display", "none");
+    $("#app").delay(300).css("opacity", "1").css("display", "block");
+  } else if (view= "results"){
+    $("#app").css("opacity", "0").delay(300).css("display", "none");
+    $("#results").delay(300).css("opacity", "1").css("display", "block");
+  }
+}
 
 var totalTimer = new Timer({
   tick: wordTime,
@@ -115,6 +124,9 @@ var totalTimer = new Timer({
 });
 
 $(document).ready(function() {
+
+
+  swapView("app");
 
   $("#start-btn").click(function() {
     $(".play-pause").css("opacity", "0").delay(300);
@@ -142,6 +154,7 @@ $(document).ready(function() {
   $("#start-btn").click(function() {
     totalTimer.start(totalTime).on('end', function () {
       // AUSWERTUNG ANZEIGEN //
+      swapView("results");
       for (var i = 0; i < bestatterInput.length; i++) {
         $("#bestatter-results").append(bestatterInput[i].html)
       }
@@ -157,6 +170,13 @@ $(document).ready(function() {
     });
   });
 
+  // Reset listener
+  $(".reset").click(function() {
+    swapView("app");
+    $("#time-dig").css("opacity", "0");
+    $(".play-pause").delay(300).css("opacity", "1");
+
+  })
 });
 
 // ------------------------------------------------- //

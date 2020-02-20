@@ -64,6 +64,7 @@ var originData = [
 ];
 var dataArr = [...originData];
 var wordCounter;
+var score = 0;
 
 
 var bestatterInput = [];
@@ -175,6 +176,7 @@ $(document).ready(function() {
       wordTimer.stop();
       $("#main").empty();
       // AUSWERTUNG ANZEIGEN //
+      $("#score").text("Punktzahl: " + score);
       swapView("results");
       for (var i = 0; i < bestatterInput.length; i++) {
         $("#bestatter-results").append(bestatterInput[i].html)
@@ -194,6 +196,7 @@ $(document).ready(function() {
 
   // Reset listener
   $(".reset").click(function() {
+    score = 0;
     swapView("app");
     $("#time-dig").css("opacity", "0");
     $(".play-pause").delay(300).css("opacity", "1");
@@ -259,6 +262,7 @@ var attempt = 0;
         var validationClass;
 
         if (chosenField == correctAnswer) {
+          score = score + 1;
           validationClass = "right";
         }
         else {
@@ -280,54 +284,4 @@ var attempt = 0;
             break;
         }
 
-      }
-
-
-
-// ----------------------------------------------- //
-
-
-
-      function verify() {
-        attempt += 1;
-        var ans = true;
-        var c = document.getElementById('div1').childNodes;
-        if (c[0] != null && c[0].dataset.ans != 'div1') {
-          ans = false;
-          document.getElementById("pool").appendChild(c[0]);
-        }
-
-        var c = document.getElementById('div2').childNodes;
-        if (c[0] != null && c[0].dataset.ans != 'div2') {
-          ans = false;
-          document.getElementById("pool").appendChild(c[0]);
-        }
-
-        var c = document.getElementById('div3').childNodes;
-        if (c[0] != null && c[0].dataset.ans != 'div3') {
-          ans = false;
-          document.getElementById("pool").appendChild(c[0]);
-        }
-
-        var c = document.getElementById('div4').childNodes;
-        if (c[0] != null && c[0].dataset.ans != 'div4') {
-          ans = false;
-          document.getElementById("pool").appendChild(c[0]);
-        }
-
-        if (ans) {
-          $("#msg").html("All Correct");
-        } else {
-          $("#msg").html("Something is wrong");
-        }
-
-        if (attempt > 2) {
-          $("#showAns").show();
-        }
-
-      }
-
-function showAns() {
-        var ansStr = "DIV1 = IMG4, DIV2 = IMG3, DIV3 = IMG2, DIV4 = IMG1";
-        $("#ans_msg").html(ansStr);
       }

@@ -208,7 +208,8 @@ $(document).ready(function() {
     bestatterInput = [];
     bueroInput = [];
     tischlerInput = [];
-
+    wordTimer.stop();
+    totalTimer.stop();
   })
 });
 

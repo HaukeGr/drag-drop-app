@@ -212,6 +212,7 @@ var attempt = 0;
         $("#main").append("<div class='text' draggable='true' ondragstart='drag(event)' data-ans='" + dataArr[wordCounter].field + "'>" + dataArr[wordCounter].text + "</div>");
         dataArr.splice(wordCounter, 1);
         changeWord();
+        $(ev.target).css("background-color", "rgba(0, 0, 0, 0)")
         ev.preventDefault();
         var correctAnswer = ev.dataTransfer.getData("correctAnswer");
         var word = ev.dataTransfer.getData("word");

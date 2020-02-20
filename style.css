@@ -167,6 +167,7 @@ html,body{
   border-radius: 100%;
   padding: 0.25em;
 }
+
 html *, body *, .text{
   /*cursor: none!important;*/
 }

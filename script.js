@@ -213,10 +213,13 @@ $(document).ready(function() {
 
     $("#big-circle").circleProgress({
       value: 1,
+      animation: { duration: 1, easing: "circleProgressEasing" }
     });
+
 
     $("#small-circle").circleProgress({
       value: 1,
+      animation: { duration: 1, easing: "circleProgressEasing" }
     });
 
   })

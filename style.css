@@ -168,6 +168,12 @@ html,body{
   border-radius: 100%;
   padding: 0.25em;
 }
+#reset-btn-2{
+  bottom: auto;
+  left: auto;
+  top: 1em;
+  right: 1em;
+}
 
 .hide {
   transform: translateX(-9999px);

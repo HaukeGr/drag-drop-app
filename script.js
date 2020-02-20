@@ -217,6 +217,9 @@ var attempt = 0;
       }
 
       function drop(ev) {
+
+        ev.preventDefault();
+
         wordTimer.stop();
         wordCounter = Math.floor(Math.random() * (dataArr.length - 0) + 0);
         $("#main").empty();
@@ -224,7 +227,7 @@ var attempt = 0;
         dataArr.splice(wordCounter, 1);
         changeWord();
         $(ev.target).css("background-color", "rgba(0, 0, 0, 0)")
-        ev.preventDefault();
+
         var correctAnswer = ev.dataTransfer.getData("correctAnswer");
         var word = ev.dataTransfer.getData("word");
         var chosenField = ev.target.id;
@@ -252,13 +255,6 @@ var attempt = 0;
             break;
         }
 
-
-
-
-
-
-        //console.log(JSON.parse(data).target_class)
-//ev.target.appendChild(document.getElementById(JSON.parse(data).target_id));
       }
 
 

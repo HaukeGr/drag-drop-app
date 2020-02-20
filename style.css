@@ -173,8 +173,17 @@ html,body{
   left: auto;
   top: 1em;
   right: 1em;
+  padding: 0.25em;
+  transform: scale(0.75);
 }
 
+#score{
+  position: absolute;
+  display: block;
+  text-align: center;
+  width:100%;
+  bottom: 0;
+}
 .hide {
   transform: translateX(-9999px);
 }

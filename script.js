@@ -266,6 +266,7 @@ var attempt = 0;
           validationClass = "right";
         }
         else {
+          score = score - 1;
           validationClass = "wrong";
         }
 

@@ -262,6 +262,7 @@ var attempt = 0;
         var validationClass;
 
         if (chosenField == correctAnswer) {
+
           score = score + 1;
           validationClass = "right";
         }

@@ -168,13 +168,6 @@ html,body{
   border-radius: 100%;
   padding: 0.25em;
 }
-<<<<<<< HEAD
-
-html *, body *, .text{
-  /*cursor: none!important;*/
-}
-=======
->>>>>>> 2cc1740fb3b4b99414ed0a0b4a976a742b24d4aa
 
 .hide {
   transform: translateX(-9999px);

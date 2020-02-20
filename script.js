@@ -1,5 +1,5 @@
 var wordTime = 3;
-var totalTime = 10;
+var totalTime = 30;
 var originData = [
   {text: "Fotos bearbeiten", field: "buero-drop"},
   {text: "Kontieren", field: "buero-drop"},
@@ -195,9 +195,6 @@ $(document).ready(function() {
   // Reset listener
   $(".reset").click(function() {
     swapView("app");
-    var bestatterInput = [];
-    var bueroInput = [];
-    var tischlerInput = [];
     $("#time-dig").css("opacity", "0");
     $(".play-pause").delay(300).css("opacity", "1");
     dataArr = [...originData];

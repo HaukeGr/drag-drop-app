@@ -85,6 +85,16 @@ html,body{
   color: #4C4C4C;
   padding: 0;
 }
+.made{
+  position: absolute;
+  margin: 5em 0 auto 15em;
+  padding: 0;
+  height: 0;
+}
+.made svg{
+  transform: scale(0.15);
+  padding: 0;
+}
 .buero{
   background-color: #DBDBDB;
 }
